@@ -4,12 +4,14 @@ import Website from "./pages/Website"
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Layout from "./components/Layout/Layout";
 import Properties from "./pages/Properties/Properties";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
+  const queryClient = new QueryClient()
     return(
+      <QueryClientProvider>
       <BrowserRouter>
       <Suspense fallback={<div>Loading...</div>}>
-
       <Routes>
 
         <Route element={<Layout/>}>
@@ -20,6 +22,7 @@ function App() {
       </Routes>
       </Suspense>
       </BrowserRouter>
+      </QueryClientProvider>
     );
 }
 
