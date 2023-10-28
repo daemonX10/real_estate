@@ -15,7 +15,7 @@ const Header = () => {
     }
   }
   return (
-    <section className='h-wrapper'>
+    <section className='h-wrapper' style={{background: headerColor}}>
         <div className='flexCenter paddings innerWidth h-container'>
           <Link to='/'>
           <img src="./logo.png" alt='logo' width={100}/>
