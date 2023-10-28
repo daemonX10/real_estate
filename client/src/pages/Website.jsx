@@ -13,7 +13,6 @@ const website = () => {
     <div className="App">
       <div>
         <div className="white-gradient"/>
-        <Header />
         <Hero />
       </div>
       <Companies />
@@ -21,7 +20,7 @@ const website = () => {
       <Value />
       <Contact />
       <GetStarted />
-      <Footer />
+      
     </div>
 
     );

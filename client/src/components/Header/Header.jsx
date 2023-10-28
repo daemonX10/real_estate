@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Header.css'
 import {BiMenuAltRight} from "react-icons/bi";
 import OutsideClickHandler from 'react-outside-click-handler';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -14,8 +15,10 @@ const Header = () => {
   return (
     <section className='h-wrapper'>
         <div className='flexCenter paddings innerWidth h-container'>
-
+          <Link to='/'>
           <img src="./logo.png" alt='logo' width={100}/>
+            </Link>
+
           <OutsideClickHandler
           onOutsideClick={() => setMenuOpened(false)}
           >
