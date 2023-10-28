@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import './Header.css'
 import {BiMenuAltRight} from "react-icons/bi";
+import useHeaderColor from '../../hooks/useHeaderColor';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Link, NavLink } from 'react-router-dom';
 
 
 const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
+  const headerColor = useHeaderColor();
   const getMenuStyles = (menuOpened) => {
     if(document.documentElement.clientWidth <= 800){
       return {right: !menuOpened && "-100%"};
