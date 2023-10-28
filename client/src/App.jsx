@@ -5,6 +5,8 @@ import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Layout from "./components/Layout/Layout";
 import Properties from "./pages/Properties/Properties";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ToastContainer } from "react-toastify";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 function App() {
   const queryClient = new QueryClient()
@@ -22,6 +24,8 @@ function App() {
       </Routes>
       </Suspense>
       </BrowserRouter>
+      <ToastContainer/>
+      <ReactQueryDevtools initialIsOpen={false}/>
       </QueryClientProvider>
     );
 }
