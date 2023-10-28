@@ -4,7 +4,12 @@ import { prisma } from "../config/prismaConfig.js";
 const createResidency = asyncHandler(async (req, res) => {
     const { title , description , price , address, country , city, facilities , images , userEmail } = req.body.data;
 
-    console.log(req.body.data)
+    const user = await prisma.user.findUnique({where:{email:userEmail}});
+
+    if(!user){
+        res.status(400).send("User not found")
+    }
+
     try {
         const residency = await prisma.residency.create({ 
             data: {
@@ -29,15 +34,26 @@ const createResidency = asyncHandler(async (req, res) => {
     }
 });
 
-// get residencies
-const getAllResidencies = asyncHandler(async (req, res) => { 
+const getAllResidencies = asyncHandler(async (req, res) => {
     const residencies = await prisma.residency.findMany({
-        orderBy  : {
-            createdAt:'desc'
-        }
+        orderBy: {
+            createdAt: "desc"
+        },
     });
-        res.send(residencies)
-    });
+    res.send(residencies);
+})
+
+// to get specific residency
+
+const getResidency = asyncHandler(async (req, res) => {
+    const {id} = req.params;
+    try {
+        const residency = await prisma.residency.findUnique({where:{id}});
+        res.send(residency);
+    } catch (error) {
+        throw new Error(error.message)
+    }
+});
 
 
-export { createResidency , getAllResidencies };
+export { createResidency, getAllResidencies,getResidency };
