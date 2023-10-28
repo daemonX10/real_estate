@@ -29,4 +29,15 @@ const createResidency = asyncHandler(async (req, res) => {
     }
 });
 
-export { createResidency };
+// get residencies
+const getAllResidencies = asyncHandler(async (req, res) => { 
+    const residencies = await prisma.residency.findMany({
+        orderBy  : {
+            createdAt:'desc'
+        }
+    });
+        res.send(residencies)
+    });
+
+
+export { createResidency , getAllResidencies };
